@@ -3,9 +3,9 @@
 {% for notatka in notatki %}
     <li>
         <a href="{% url 'notatka_szczegoly' notatka.id %}">{{ notatka.tytul }}</a> - {{ notatka.data_utworzenia }}
-        <!-- Sprawdzenie, czy notatka jest ulubiona -->
+
         {% if notatka.id in ulubione_ids %}
-            <span>🌟</span> <!-- gwiazdka dla ulubionych notatek -->
+            <span>🌟</span>
         {% else %}
             <a href="{% url 'dodaj_do_ulubionych' notatka.id %}">Dodaj do ulubionych</a>
         {% endif %}

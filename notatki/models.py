@@ -18,7 +18,6 @@ class Notatka(models.Model):
 
 class Ulubione(models.Model):
     notatka = models.ForeignKey(Notatka, on_delete=models.CASCADE)
-    # Możesz dodać inne pola według potrzeb, na przykład:
-    # data_dodania = models.DateTimeField(auto_now_add=True)
+
 
 

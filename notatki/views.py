@@ -39,7 +39,7 @@ from django.shortcuts import get_object_or_404, redirect
 def dodaj_do_ulubionych(request, notatka_id):
     notatka = get_object_or_404(Notatka, id=notatka_id)
     Ulubione.objects.create(notatka=notatka)
-    return redirect('lista_notatek')  # Powrót do listy notatek po dodaniu do ulubionych.
+    return redirect('lista_notatek')
 
 def lista_ulubionych(request):
     ulubione = Ulubione.objects.all()
@@ -47,15 +47,15 @@ def lista_ulubionych(request):
 
 
 def usun_z_ulubionych(request, notatka_id):
-    # Spróbuj znaleźć notatkę w ulubionych
+
     try:
         ulubione = Ulubione.objects.get(notatka_id=notatka_id)
     except Ulubione.DoesNotExist:
-        # Jeśli notatka nie jest w ulubionych, przekieruj z powrotem z odpowiednim komunikatem
+
         messages.error(request, "Notatka nie jest w ulubionych.")
         return redirect('lista_notatek')
 
-    # Jeśli notatka jest w ulubionych, usuń ją
+
     ulubione.delete()
     messages.success(request, "Usunięto notatkę z ulubionych.")
     return redirect('lista_notatek')
