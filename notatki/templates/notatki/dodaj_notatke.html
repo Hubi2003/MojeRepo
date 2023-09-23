@@ -1,0 +1,9 @@
+<!-- notatki/templates/notatki/dodaj_notatke.html -->
+
+<h1>Dodaj notatkę</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj</button>
+</form>
+

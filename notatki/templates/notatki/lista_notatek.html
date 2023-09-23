@@ -1,0 +1,22 @@
+<h1>Lista notatek</h1>
+<ul>
+{% for notatka in notatki %}
+    <li>
+        <a href="{% url 'notatka_szczegoly' notatka.id %}">{{ notatka.tytul }}</a> - {{ notatka.data_utworzenia }}
+        <!-- Sprawdzenie, czy notatka jest ulubiona -->
+        {% if notatka.id in ulubione_ids %}
+            <span>🌟</span> <!-- gwiazdka dla ulubionych notatek -->
+        {% else %}
+            <a href="{% url 'dodaj_do_ulubionych' notatka.id %}">Dodaj do ulubionych</a>
+        {% endif %}
+        <a href="{% url 'usun_notatke' notatka.id %}">Usuń</a>
+        {% for tag in notatka.tagi.all %}
+            <span>{{ tag.nazwa }}</span>
+        {% endfor %}
+    </li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'dodaj_notatke' %}">Dodaj notatkę</a>
+
+

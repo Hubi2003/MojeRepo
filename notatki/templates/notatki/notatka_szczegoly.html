@@ -1,0 +1,11 @@
+<h1>{{ notatka.tytul }}</h1>
+<p>Data utworzenia: {{ notatka.data_utworzenia }}</p>
+<p>{{ notatka.tresc }}</p>
+<p>Tagi:</p>
+<ul>
+{% for tag in notatka.tagi.all %}
+    <li>{{ tag.nazwa }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'lista_notatek' %}">Wróć do listy notatek</a>
+
